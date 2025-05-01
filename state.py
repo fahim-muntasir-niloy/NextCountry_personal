@@ -30,10 +30,13 @@ class NC_AgentResponse(BaseModel):
     topic: str
     summary: str
     user_profile_summary:str
-    suitable_countries: str
+    suitable_countries_with_score: List[str]
+    suitable_universities_with_score: List[str]
+    scholarship_opportunities: List[str]
+    university_details: List[str]
     reasoning: str
-    pros:str
-    cons:str
+    pros:List[str]
+    cons:List[str]
     suggestions: str
     sources: List[str]
     tools_used: List[str]

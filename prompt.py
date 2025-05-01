@@ -11,8 +11,9 @@ prompt = ChatPromptTemplate.from_messages([("system",
 
                                             you need to do deep research on the query and provide a detailed response to the user.
 
-                                            Your tone should be friendly and professional. Your response must be formatted in this way\n{format_instructions}"""
-                                            
+                                            Your tone should be friendly and professional. Your response must be formatted in markdown this way\n{format_instructions}.
+                                            Lastly save the report to a text file using the tool save_report."""
+                                       
                                             ),
                                            ("placeholder", "{chat_history}"),
                                            ("human", "{messages}"),
