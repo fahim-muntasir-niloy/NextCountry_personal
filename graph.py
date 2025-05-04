@@ -7,7 +7,7 @@ load_dotenv()
 
 from state import UserState, NC_AgentResponse
 from prompt import prompt, parser
-from tools import search_tavily, save_report
+from tools import search_tavily, search_exa
 
 llm = ChatGoogleGenerativeAI(
     temperature=0.5,
@@ -18,11 +18,11 @@ llm = ChatGoogleGenerativeAI(
 agent = create_tool_calling_agent(
     llm=llm,
     prompt=prompt,
-    tools=[search_tavily, save_report]
+    tools=[search_tavily, search_exa]
 )
 
 agent_executor = AgentExecutor(agent=agent,
-                               tools=[search_tavily, save_report],
+                               tools=[search_tavily, search_exa],
                                max_iterations=5,
                                return_intermediate_steps=True,
                                handle_parsing_errors=True
