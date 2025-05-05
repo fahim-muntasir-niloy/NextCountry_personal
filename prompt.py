@@ -1,6 +1,6 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
-from state import UserState, NC_AgentResponse
+from state import NC_UserResponse, NC_AgentResponse
 parser = PydanticOutputParser(pydantic_object=NC_AgentResponse)
 
 prompt = ChatPromptTemplate.from_messages([("system", 

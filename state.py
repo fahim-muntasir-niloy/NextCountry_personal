@@ -1,29 +1,29 @@
 from typing import List, Optional
 from pydantic import BaseModel, EmailStr
+from langgraph.graph import MessagesState
 
-class UserState(BaseModel):
-    user_name: Optional[str]
-    user_email: Optional[EmailStr]
-    age: Optional[int]
-    gender: Optional[str]
-    address: Optional[str]
-    phone: Optional[str]
-    intended_country_of_study: Optional[str]
-    intended_university: Optional[str]
-    intended_degree: Optional[str]
-    preferred_language_of_study: Optional[str]
-    intended_program: Optional[str]
-    intended_course: Optional[str]
-    intended_session: Optional[str]
-    intended_year: Optional[str]
-    latest_grade_point: Optional[str]
-    medical_conditions: Optional[str]
-    english_proficiency: Optional[str]
-    research_interests: Optional[List[str]]
-    resarch_experience: Optional[str]
-    research_publications: Optional[List[str]]
-    visa_status: Optional[str]
-    work_experience: Optional[str]
+class NC_UserResponse(MessagesState):
+    main_goal: Optional[str]
+    current_nationality: Optional[str]
+    additional_passport: bool
+    additional_residency: bool
+    current_work_situation: Optional[str]
+    current_job_industry: Optional[str]
+    company_registered_at_home: bool
+    will_open_company_at_abroad: bool
+    monthly_income: Optional[str]
+    savings_in_personal_account: Optional[str]
+    interested_region: Optional[str]
+    duration_of_stay: Optional[str]
+    tax_benefits_option: Optional[str]
+    help_open_bank_account: bool
+    extend_stay_option: bool
+    solo_or_family: Optional[str]
+    number_of_dependents: Optional[str]
+    accommodation_in_new_country: bool  
+    flight_status:bool
+    past_immigration_issue: Optional[str]
+    criminal_record: bool
     
     
 class NC_AgentResponse(BaseModel):
