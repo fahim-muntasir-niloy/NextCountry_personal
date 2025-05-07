@@ -1,4 +1,4 @@
-from prompt import parser
+from agent_utils.prompt import parser
 from state import NC_AgentResponse
 from datetime import datetime
 
