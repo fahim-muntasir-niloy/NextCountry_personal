@@ -5,17 +5,17 @@ from graph import graph
 response = graph.invoke(
     {"messages":"Generate a response for the user based on the user details and query.",
      
-        "main_goal": "Startup builder wanting to expand business in UK",
-        "current_nationality": "Bangladesh",
+        "main_goal": "Startup builder wanting to expand business in Canada",
+        "current_nationality": "Sudan",
         "additional_passport": False,
         "additional_residency": False,
         "current_work_situation": "Owner",
         "current_job_industry": "Fintech",
         "company_registered_at_home": True,
         "will_open_company_at_abroad": False,
-        "monthly_income": "5000",
+        "monthly_income": "3000",
         "savings_in_personal_account": "150000",
-        "interested_region": "Europe",
+        "interested_region": "Toronto",
         "duration_of_stay": "3 years",
         "tax_benefits_option": True,
         "help_open_bank_account": True,
@@ -34,6 +34,7 @@ response = graph.invoke(
 
 
 # save md file
+# save the content of the last chunk
 from utils.save_report import save_report
 save_report(response)
 

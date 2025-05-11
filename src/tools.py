@@ -24,7 +24,7 @@ def search_exa(query: str) -> str:
   return exa_client.search_and_contents(query,
                                        num_results = 5,
                                        filter_empty_results=True,
-                                       livecrawl=True,
+                                       livecrawl="auto",
                                        text = True)
 
 # === Tavily ===
@@ -40,29 +40,32 @@ def search_tavily(query: str) -> str:
 
 
 # === retriver tool ===
-from langchain_huggingface import HuggingFaceEmbeddings
-hf_embedding_model = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-m3",
-    show_progress=True,
-)
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
+google_embedding_model = GoogleGenerativeAIEmbeddings(
+    model="models/text-embedding-004",
+)
 vector_store = AstraDBVectorStore(
-    embedding = hf_embedding_model,
-    collection_name="uk_visa_details",
+    embedding = google_embedding_model,
+    collection_name="visa_information_v3",
     api_endpoint=ASTRA_DB_API_ENDPOINT,
     token=ASTRA_DB_APPLICATION_TOKEN,
     autodetect_collection=True,
 )
 
 @tool
-def vecdb_tool(query:str):
+def vecdb_tool(query:str, country:str):
   """
   Look into the vector database and retrieve relevant information.
   This is the primary tool used by the agent.
+  You must provide the country name in full form and all capital letters.
+  example: 'UNITED STATES OF AMERICA'
   """
   retriever = vector_store.as_retriever(
     search_type="similarity", 
-    search_kwargs={"k":5}
+    search_kwargs={"k":15, 
+                   "filter": {"country": country}
+                   }
   )
   return retriever.invoke(query)
 
