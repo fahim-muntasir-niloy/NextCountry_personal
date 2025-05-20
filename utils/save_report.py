@@ -1,5 +1,8 @@
 from datetime import datetime
 import os
+from langchain_core.messages import AIMessage, HumanMessage
+
+
 
 def save_report(response):
     output_dir = "D:\\NextCountry\\responses"
@@ -14,6 +17,9 @@ def save_report(response):
 
     # Write to file with UTF-8 encoding
     with open(file_path, "w", encoding="utf-8") as f:
-        f.write(response["messages"][-1].content)
+        # f.write(response["messages"][-1].content)
+        msgs = [m for m in response["messages"] if isinstance(m, AIMessage)]
+        for msg in msgs:
+            f.write(msg.content)
         
     print(f"Response saved to {file_path}")

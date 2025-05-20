@@ -1,0 +1,60 @@
+{
+    "Q1: What is your main goal?": "Investment Programs",
+    "Q2: What is your nationality?": "Algeria",
+    "Q3: Do you hold any additional passports?": "No",
+    "Q4: Do you currently have residency or citizenship in another country?": "No",
+    "Q5: What is your primary reason for seeking an investment program?": "Secure a Safe Future for My Family",
+    "Q6: What is your long-term goal?": "Build a real estate portfolio in a new country",
+    "Q7: Which regions are you interested in investing in?": "European Union (Portugal, Spain, Greece, etc.)",
+    "Q8: How much are you willing to invest?": "$1,000,000+",
+    "Q9: How much liquid cash do you currently have available for investment?": "$250,000 - $1 million",
+    "Q10: How do you plan to finance your investment?": "Bank loan / Financing",
+    "Q11: Do you require financing options for your investment?": "No",
+    "Q12: Which type of investment are you most interested in?": "Real Estate Investment (Purchase property for residence or rental income)",
+    "Q13: Would you prefer a passive investment or an active business investment?": "Active – I want to run my business in the new country",
+    "Q14: Are you currently a business owner or employed?": "Both",
+    "Q15: If a business owner, how many years have you operated your business?": "3-5 years",
+    "Q16: What is your company’s annual revenue?": "$1 million - $5 million",
+    "Q17: What is your monthly income?": "$15,000 - $50,000",
+    "Q18: Are you applying alone or with family?": "With Spouse & Children",
+    "Q19: How many dependents will be included in your application?": "3-5",
+    "Q20: What is your primary tax objective?": "Optimize Capital Gains & Wealth Tax",
+    "Q21: How soon do you need to obtain residency or citizenship?": "1-2 years",
+    "Q22: Are you willing to relocate to the country where you invest?": "No, I prefer remote investment",
+    "Q23: Have you ever been denied a visa or had immigration issues?": "Yes, and it was not resolved",
+    "Q24: Do you or any of your dependents have a criminal record?": "Yes"
+}
+
+# convert the above json to input for the supervisor agent
+state = {
+    "main_goal": "Investment Programs",
+    "nationality": "Algeria",
+    "additional_passport": "No",
+    "additional_residency": "No",
+    "primary_reason_for_investment": "Secure a Safe Future for My Family",
+    "long_term_goal": "Build a real estate portfolio in a new country",
+    "interested_region_to_invest": "European Union (Portugal, Spain, Greece, etc.)",
+    "investment_amount": "$1,000,000",
+    "liquid_cash_amount": "$250,000 - $1 million",
+    "financing_plan": "Bank loan / Financing",
+    "require_financing_options": "No",
+    "type_of_investment_preferred": "Real Estate Investment (Purchase property for residence or rental income)",
+    "passive_or_active_investment": "Active – I want to run my business in the new country",
+    "current_business_status": "Both",
+    "years_of_operation": "3-5 years",
+    "annual_revenue": "$1 million - $5 million",
+    "monthly_income": "$15,000 - $50,000",
+    "solo_or_family": "With Spouse & Children",
+    "number_of_dependents": "3-5",
+    "primary_tax_objective": "Optimize Capital Gains & Wealth Tax", 
+    "urgency_for_residence": "1-2 years",
+    "relocate_to_investment_country": "No, I prefer remote investment",
+    "visa_denied_previously": "Yes, and it was not resolved",
+    "criminal_record": "Yes"
+}
+
+
+
+
+
+

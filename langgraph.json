@@ -1,11 +1,11 @@
 {
     "graphs": {
-        "agent": "./src/graph.py:graph"
+        "agent": "./supervisor_agent/supervisor.py:next_country_supervisor"
     },
-    "env": "./src/.env",
+    "env": "./supervisor_agent/.env",
     "python_version": "3.12",
 
     "dependencies": [
-        "./src"
+        "./supervisor_agent"
     ]
 }
