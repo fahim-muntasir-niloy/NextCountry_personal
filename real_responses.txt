@@ -1,0 +1,155 @@
+{
+    "Q1: What is your main goal?": "Startup Programs",
+    "Q2: What is your nationality?": "Algeria",
+    "Q3: Do you hold any additional passports?": "no",
+    "Q4: Do you currently have residency or citizenship in another country?": "no",
+    "Q5: What is your Geographic Preference?": "Established Revenue",
+    "Q6: Where are you currently based in?": "Angola",
+    "Q7: Any Preferred Countries?": "American Samoa",
+    "Q8: Is your startup a registered entity?": "no",
+    "Q9: Current Funding Status & Approach?": "Already Backed by VCs (significant funding secured)",
+    "Q10: Innovation Level?": "Unsure How to Categorise",
+    "Q11: What is your Family Situation?": "Me + Spouse/Partner",
+    "Q12: What is the Relocation Scope?": "Founder + Co-Founder (or key partner)",
+    "Q13: Availability of Funds?": "$50k-$200k",
+    "Q14: Any Additional Startup Investment Needs?": "Seeking Angel Funding (up to ~$100k)",
+    "Q15: Any Language & Team Requirements?": "Prefer a No-Language-Test Route",
+    "Q16: Preferred Timeline?": "Just Researching for Now",
+    "Q17: Any Geographic Preference?": "North America (Canada/USA)",
+    "Q18: Long-Term Goals (Residency/Citizenship)?": "Not Sure / Just Exploring",
+    "Q19: Main Reason for Relocating?": "Immigration Pathway (Residency /Citizenship)",
+    "Q20: Industry or Sector?": "Other / Not Sure",
+    "Q21: What is Your Risk Tolerance?": "Medium (open to emerging markets if benefits are solid)",
+    "Q22: Do you have any Prior International Experience?": "Have Foreign Partners, But No Foreign Entity",
+    "Q23: Do you require post-relocation support?": "Company setup and incorporation",
+    "Q24: Have you ever been denied a visa or had immigration issues?": "Yes, but successfully appealed",
+    "Q25: Do you or any of your dependents have a criminal record?": "no"
+}
+########### Startup
+
+-----------------------------------------------------------------------------------
+
+{
+    "Q1: What is your main goal?": "Investment Programs",
+    "Q2: What is your nationality?": "Andorra",
+    "Q3: Do you hold any additional passports?": "no",
+    "Q4: Do you currently have residency or citizenship in another country?": "no",
+    "Q5: What is your primary reason for seeking an investment program?": "Secure a Safe Future for My Family",
+    "Q6: What is your long-term goal?": "Build a real estate portfolio in a new country",
+    "Q7: Which regions are you interested in investing in?": "No Preference – I’m open to recommendations",
+    "Q8: How much are you willing to invest?": "Less than $100,000",
+    "Q9: How much liquid cash do you currently have available for investment?": "$1 million+",
+    "Q10: How do you plan to finance your investment?": "Combination of multiple sources",
+    "Q11: Do you require financing options for your investment?": "no",
+    "Q12: Which type of investment are you most interested in?": "No Preference – I’m open to recommendations",
+    "Q13: Would you prefer a passive investment or an active business investment?": "Active – I want to run my business in the new country",
+    "Q14: Are you currently a business owner or employed?": "Unemployed",
+    "Q15: If a business owner, how many years have you operated your business?": "5+ years",
+    "Q16: What is your company’s annual revenue?": "$5 million+",
+    "Q17: What is your monthly income?": "$50,000+",
+    "Q18: Are you applying alone or with family?": "With Spouse & Children",
+    "Q19: How many dependents will be included in your application?": "More than 5",
+    "Q20: What is your primary tax objective?": "No Specific Tax Goal",
+    "Q21: How soon do you need to obtain residency or citizenship?": "2+ years",
+    "Q22: Are you willing to relocate to the country where you invest?": "No, I prefer remote investment",
+    "Q23: Have you ever been denied a visa or had immigration issues?": "Yes, and it was not resolved",
+    "Q24: Do you or any of your dependents have a criminal record?": "no"
+}
+#############------- investment
+----------------------------------------------------------------------
+
+{
+    "Q1: What is your main goal?": "Digital Nomad",
+    "Q2: What is your nationality?": "Albania",
+    "Q3: Do you hold any additional passports?": "no",
+    "Q4: Do you currently have residency or citizenship in another country?": "no",
+    "Q5: What best describes your work situation?": "Other",
+    "Q6: What industry do you work in?": "s",
+    "Q7: Do you work for a company registered in your home country?": "no",
+    "Q8: Are you looking to open a company in your new country?": "No, I will continue working remotely",
+    "Q9: What is your monthly income from remote work?": "Less than $1,500",
+    "Q10: How much savings do you have in your personal account?": " $50,000+",
+    "Q11: Which regions are you interested in moving to?": "Europe (Portugal, Spain, Estonia, etc.)",
+    "Q12: How long do you plan to stay in your new country?": "Not sure",
+    "Q13: Are you looking for tax benefits or financial optimization?": "No, tax benefits are not a priority",
+    "Q14: Do you need help setting up a bank account in your new country?": "no",
+    "Q15: Do you want the option to extend your stay or apply for residency?": "No, I plan to return home after my visa expires",
+    "Q16: Are you applying alone or with family?": "With Spouse",
+    "Q17: How many dependents will be included in your application?": "1-2",
+    "Q18: Do you already have accommodation arranged in your new country?": "No, I need help finding a place",
+    "Q19: Do you already have a flight booked?": "no",
+    "Q20: Have you ever been denied a visa or had immigration issues?": "Yes, and it was not resolved",
+    "Q21: Do you or any of your dependents have a criminal record?": "no"
+}
+######################### digital nomad
+----------------------------------------------------------
+
+{
+    "Q1: What is your main goal?": "Tourism",
+    "Q2: What is your nationality?": "Algeria",
+    "Q3: Do you hold any additional passports?": "no",
+    "Q4: What is the main purpose of your visit?": "Others",
+    "Q5: Which country do you want to visit?": "American Samoa",
+    "Q6: How long do you plan to stay?": "More than 90 days",
+    "Q7: Have you traveled internationally in the past 5 years?": "no",
+    "Q8: Do you currently hold a valid visa for any country?": "no",
+    "Q9: What is your current work status?": "Unemployed",
+    "Q10: What is your monthly income?": "$2500 +",
+    "Q11: How much savings do you have in your personal account?": "$6000+",
+    "Q12: What ties do you have to your home country?": "None of the Above",
+    "Q13: Do you already have accommodation and a return flight booked?": " No, I will book later",
+    "Q14: Have you ever been denied a visa or had immigration issues?": "Yes, and it was not resolved"
+}
+################ tourism
+--------------------------------
+{
+    "Q1: What is your main goal?": "Employment",
+    "Q2: What is your nationality?": "Albania",
+    "Q3: Do you hold any additional passports?": "no",
+    "Q4: Do you currently have residency or citizenship in another country?": "no",
+    "Q5: What is your highest level of education?": "Vocational/Technical Certification",
+    "Q6: What is your current job title?": "s",
+    "Q7: How many years of work experience do you have in this field?": "10+ Years",
+    "Q8: Do you have a job offer from an employer abroad?": "No, but I plan to apply once I get the visa",
+    "Q9: Does your employer sponsor work visas?": "No, I need to apply independently",
+    "Q10: Are you applying alone or with family?": "With Spouse & Children",
+    "Q11: How many dependents will be included in your application?": "More than 5",
+    "Q12: Which regions are you interested in working in?": "No Preference – I’m open to recommendations",
+    "Q13: What type of work visa are you looking for?": "Work & Residence Visa (Long-term immigration option)",
+    "Q14: What is your current monthly salary?": "$10,000+",
+    "Q15: What is your expected salary in your new country?": "$10,000+",
+    "Q16: Do you have enough savings to support yourself during the visa process?": "No, I need financial assistance",
+    "Q17: Are you willing to pay for government visa fees and relocation expenses?": "No, I need an employer to cover all costs",
+    "Q18: What is your English proficiency level?": "Native Speaker",
+    "Q19: Do you have an English language test certification?": "No, and I do not plan to take the test",
+    "Q20: Have you ever been denied a visa or had immigration issues?": "Yes, and it was not resolved",
+    "Q21: Do you or any of your dependents have a criminal record?": "no",
+    "Q22: If a work visa is not available, would you consider alternative immigration options?": "No, I am only interested in employment visas",
+    "Q23: How soon do you need to move for work?": "No rush, just exploring "
+}
+############### employment
+----------------------
+{
+    "Q1: What is your main goal?": "Expand/Relocate Existing Business",
+    "Q2: What is your Budget/Investment Level?": "50k - 200k USD",
+    "Q3: What is your Language Requirements?": "I don’t speak English",
+    "Q4: What is your Family Situation?": "Married ( No Children )",
+    "Q5: What is your Timeframe/Urgency?": "Flexible ( 6 - 12 months)",
+    "Q6: Geographic Preference?": "Open to Suggestions",
+    "Q7: Any Preferred Countries?": "American Samoa",
+    "Q8: Your Current Business Registration?": "Not officially registered yet",
+    "Q9: What is your Industry/Sector?": "Services / Consulting / Agency",
+    "Q10: Company Ownership Structure?": "Ownership split among multiple partners",
+    "Q11: Number of Employees?": "250+",
+    "Q12: Annual Revenue (Approx.)?": "$100,000–$500,000",
+    "Q13: Budget for Expansion?": "$50k–$200k",
+    "Q14: Expansion Timeline?": "3–6 months",
+    "Q15: Preferred Region?": "Open to any region",
+    "Q16: Family Relocation?": "Me + spouse",
+    "Q17: Long-Term Goals?": "Still exploring options",
+    "Q18: Previous International Experience?": "Never expanded abroad",
+    "Q19: Relocation Scope?": "Founder + key management team",
+    "Q20: Are You Able to live for a Period of 180 days in a year?": "LET’S TALK"
+}
+############### expand category
+----------------------

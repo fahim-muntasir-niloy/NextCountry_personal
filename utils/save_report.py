@@ -20,6 +20,7 @@ def save_report(response):
         # f.write(response["messages"][-1].content)
         msgs = [m for m in response["messages"] if isinstance(m, AIMessage)]
         for msg in msgs:
-            f.write(msg.content)
-        
+            f.write(msg.content + "\n\n")  # Add double newline for separation
+            
+    # Print confirmation message
     print(f"Response saved to {file_path}")
