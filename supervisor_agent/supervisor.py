@@ -1,4 +1,8 @@
 from langgraph_supervisor import create_supervisor
+from tools import TOOLS
+
+
+
 from worker_agents import (llm, 
                            nomad_visa_agent, 
                            investment_visa_agent, 
@@ -27,8 +31,11 @@ next_country_supervisor = create_supervisor(
             expand_existing_business_visa_agent
             ],
     prompt=supervisor_prompt,
+    tools = TOOLS,
     add_handoff_back_messages=True,
     output_mode="full_history",
+    parallel_tool_calls = True,
+    supervisor_name="Next Country Supervisor",
 ).compile()
 
 

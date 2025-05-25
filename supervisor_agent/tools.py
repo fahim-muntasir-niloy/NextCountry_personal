@@ -15,6 +15,7 @@ os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
 from exa_py import Exa
 from tavily import TavilyClient
+from firecrawl import FirecrawlApp
 
   
 # === Exa ===
@@ -31,14 +32,45 @@ def search_exa(query: str) -> str:
 
 # === Tavily ===
 tavily_client = TavilyClient(os.environ["TAVILY_API_KEY"])
+
+# def search_tavily(query: str) -> str:
+#   """Search for webpages based on the query and 
+#   retrieve their contents using tavily."""
+#   return tavily_client.search(query,
+#                               max_results=5,
+#                               include_answer="basic",
+#                               )
 @tool
-def search_tavily(query: str) -> str:
-  """Search for webpages based on the query and 
-  retrieve their contents using tavily."""
-  return tavily_client.search(query,
-                              max_results=5,
-                              include_answer="basic",
-                              )
+def search_tavily(query: str):
+  """
+  This function fetches context on the query using tavily.
+  It will be the default search tool if the user does not specify a tool.
+  """
+  context = tavily_client.get_search_context(query)
+
+  return context
+
+# === Firecrawler Tool ===
+firecrawl_app = FirecrawlApp(api_key=os.getenv("FIRECRAWLER_API_KEY"))
+
+@tool()
+def scrape_website(url: str):
+    """
+    This is the default scraper tool. Any user query that calls for scrapper tool will use
+    this function. It scrapes the given URL and returns the content in markdown format.
+    """
+    try:
+        result = firecrawl_app.scrape_url(url,
+                                          formats=['markdown'],
+                                          onlyMainContent=True,
+                                          removeBase64Images=True)
+        return result
+    except Exception as e:
+        print(f"Error scraping {url}: {e}")
+        return None
+
+
+
 
 
 google_embedding_model = GoogleGenerativeAIEmbeddings(

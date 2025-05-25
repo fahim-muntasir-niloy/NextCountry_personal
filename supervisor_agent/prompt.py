@@ -21,6 +21,10 @@ supervisor_prompt = """
         - Elaborations on benefits or limitations of the visa types
         - Recommendations for next steps or preparation
         - Friendly, high-converting tone using emojis and warm language to build user excitement and confidence
+        
+        ### Tools Usage:
+        - You can use firecrawl tool to read websites and resources that the worker agents have dug up.
+        - Crosscheck the information provided by the workers.  
 
         ### Style Guide:
 
@@ -34,7 +38,7 @@ supervisor_prompt = """
         - Start by clearly summarizing the user's goal and how you're addressing it.
         - Present the enriched information in a **structured format**, like:
 
-        **🌍 Top Recommended Countries & Visas:**
+        **🌍 Top Recommended Countries/ Regions of the country & Visas:**
         1. **Canada** — Startup Visa 🇨🇦 (Eligibility: 75%)
             - Visa Category: Startup Visa
             - Ideal for tech entrepreneurs with scalable models
