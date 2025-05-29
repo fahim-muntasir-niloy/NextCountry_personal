@@ -54,20 +54,21 @@ def search_tavily(query: str):
 firecrawl_app = FirecrawlApp(api_key=os.getenv("FIRECRAWLER_API_KEY"))
 
 @tool()
-def scrape_website(url: str):
+def scrape_website(query):
     """
-    This is the default scraper tool. Any user query that calls for scrapper tool will use
-    this function. It scrapes the given URL and returns the content in markdown format.
+    Used to perform web searches and optionally retrieve content from the results.
+    This tool is used to scrape websites for information related to the query.
     """
     try:
-        result = firecrawl_app.scrape_url(url,
-                                          formats=['markdown'],
-                                          onlyMainContent=True,
-                                          removeBase64Images=True)
-        return result
+      result = firecrawl_app.search(
+        query,
+        limit=5,
+      )
+      
+      return result
     except Exception as e:
-        print(f"Error scraping {url}: {e}")
-        return None
+      print(f"Error searching {query}: {e}")
+      return None
 
 
 
@@ -103,4 +104,4 @@ def vecdb_tool(query:str):
   return retriever.invoke(query)
 
 
-TOOLS = [vecdb_tool, search_exa, search_tavily]
+TOOLS = [vecdb_tool, search_exa, search_tavily, scrape_website]

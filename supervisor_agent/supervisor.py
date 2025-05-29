@@ -2,7 +2,6 @@ from langgraph_supervisor import create_supervisor
 from tools import TOOLS
 
 
-
 from worker_agents import (llm, 
                            nomad_visa_agent, 
                            investment_visa_agent, 
@@ -13,8 +12,6 @@ from worker_agents import (llm,
 
 
 from prompt import supervisor_prompt
-
-# from handoff_tools import transfer_to_investment_visa_agent, transfer_to_nomad_visa_agent
 
 import os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))

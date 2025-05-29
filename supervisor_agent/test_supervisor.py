@@ -43,8 +43,9 @@ response = next_country_supervisor.invoke(
 # for msg in msgs:
 #     print(msg.content + "\n")  # or msg.pretty_print()
 
-for m in response["messages"]:
-    m.pretty_print()
+# for m in response["messages"]:
+#     m.pretty_print()
+
 
 
 from utils.save_report import save_report
