@@ -2,15 +2,17 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from langchain_core.messages import AIMessage
 import re
+import json
 
 from rich import print, console
 
 from supervisor_agent.supervisor import next_country_supervisor
 from supervisor_agent.output_agent import output_agent
+from utils.parse_json import clean_and_parse_json
 
 
 class NextCountryRequest(BaseModel):
-    message:str
+    message:dict
 
 
 app = FastAPI(
@@ -27,8 +29,13 @@ app = FastAPI(
 def json_output_flow(request: NextCountryRequest):
     data = request.message
     print("Received message: ", data)
+    
+    # Handling input json -> make it string
+    pretty_json_str = json.dumps(data, indent=4)
+    escaped_json_str = pretty_json_str.replace('\n', '\\n').replace('"', '\\"')
 
-    supervisor_response = next_country_supervisor.invoke({"messages": data})
+    supervisor_response = next_country_supervisor.invoke({"messages": escaped_json_str})
+    
     for m in supervisor_response["messages"]:
         m.pretty_print()
 
@@ -40,12 +47,19 @@ def json_output_flow(request: NextCountryRequest):
     output_response = output_agent.invoke({"messages": pretty_response})
 
     output = output_response["messages"][-1].content
+    
+    # print(output)
 
-    # Extract JSON content
-    json_content = re.sub(r'^```json\s*|\s*```$', '', output, flags=re.MULTILINE)
-    print("Final JSON response: ", json_content.strip())
-
-    return json_content.strip()
+    # Handling output string -> convert to json
+    json_match = re.search(r"```json\n(.*?)```", output, re.DOTALL)
+    if json_match:
+        json_str = json_match.group(1)
+        clean_json = json.loads(json_str)
+        print(clean_json)
+        return clean_json
+    
+    else:
+        print("No JSON block found.")
 
 
 

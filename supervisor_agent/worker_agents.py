@@ -28,7 +28,7 @@ nomad_visa_agent = create_react_agent(
         - If not found, fallback to `search_exa`
         - **Listing visa requirements**:
         - Always check `vecdb_tool` first for visa requirements
-        - If not found, use any available search tool
+        - If not found, use tavily search tool
         - You can use scrape_website tool to directly extract info from the websites that have been found by exa or tavily search
         for more info.
 
@@ -63,7 +63,7 @@ investment_visa_agent = create_react_agent(
         - If not available, fallback to `search_exa`
         - **Listing all visa requirements**:
         - Must first use the `vecdb_tool` to fetch requirements
-        - If not available, use any other search tool
+        - If not available, use tavily search tool
         - You can use scrape_website tool to directly extract info from the websites that have been found by exa or tavily search
         for more info.
 
@@ -97,7 +97,7 @@ startup_visa_agent = create_react_agent(
         - If not available, fallback to `search_exa`
         - **Listing all visa requirements**:
         - Always use `vecdb_tool` to fetch requirements first
-        - If not available, use any other search tool
+        - If not available, use tavily search tool
         - You can use scrape_website tool to directly extract info from the websites that have been found by exa or tavily search
         for more info.
 
@@ -131,7 +131,7 @@ tourist_visa_agent = create_react_agent(
         - If not available, fallback to `search_exa`
         - **Listing all visa requirements**:
         - Always use `vecdb_tool` to fetch requirements first
-        - If not available, use any other search tool
+        - If not available, use tavily search tool
         - You can use scrape_website tool to directly extract info from the websites that have been found by exa or tavily search
         for more info.
 
@@ -165,7 +165,7 @@ employment_visa_agent = create_react_agent(
         - If not available, fallback to `search_exa`
         - **Listing all visa requirements**:
         - Always use `vecdb_tool` to fetch visa requirements first
-        - If not available, use any other search tool
+        - If not available, use tavily search tool
         - You can use scrape_website tool to directly extract info from the websites that have been found by exa or tavily search
         for more info.
 
@@ -199,7 +199,7 @@ expand_existing_business_visa_agent = create_react_agent(
         - If not available, fallback to `search_exa`
         - **Listing all visa requirements**:
         - Always use `vecdb_tool` to fetch the requirements first
-        - If not available, use any other search tool
+        - If not available, use tavily search tool
         - You can use scrape_website tool to directly extract info from the websites that have been found by exa or tavily search
         for more info.
 
