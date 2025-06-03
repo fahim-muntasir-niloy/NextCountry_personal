@@ -9,3 +9,5 @@ langgraph_supervisor==0.0.26
 pydantic==2.11.5
 python-dotenv==1.1.0
 tavily_python==0.7.0
+fastapi
+uvicorn

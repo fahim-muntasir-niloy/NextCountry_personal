@@ -1,8 +1,8 @@
 from langgraph_supervisor import create_supervisor
-from tools import TOOLS
+from supervisor_agent.tools import TOOLS
 
 
-from worker_agents import (llm, 
+from supervisor_agent.worker_agents import (llm, 
                            nomad_visa_agent, 
                            investment_visa_agent, 
                             startup_visa_agent, 
@@ -11,7 +11,7 @@ from worker_agents import (llm,
                             expand_existing_business_visa_agent)
 
 
-from prompt import supervisor_prompt
+from supervisor_agent.prompt import supervisor_prompt
 
 import os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))

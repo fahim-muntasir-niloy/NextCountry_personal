@@ -3,7 +3,7 @@ from langchain.chat_models import init_chat_model
 import os
 from dotenv import load_dotenv
 load_dotenv()
-from tools import TOOLS
+from supervisor_agent.tools import TOOLS
 
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 llm = init_chat_model(
