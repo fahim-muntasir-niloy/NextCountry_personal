@@ -114,7 +114,9 @@ final_json_prompt = ChatPromptTemplate.from_messages([
     - In fit the number must be in scale of 100.
     - In "our_recommendation" you will put only one country that is best fitted.
     - In "next_steps"  you will give the steps to apply for visa of the recommended country.
-    - During any cost, if you see its unavailable/not found/not given, make a tavily search to find the cost.
+    - check the json and if you find any option to be not available or blank, you must use tavily search to find it.
+    eg: if plane fair: [] or, cost of living: varies
+    search on tavily for plane fare or cost of living to that country.
 
     
     """),

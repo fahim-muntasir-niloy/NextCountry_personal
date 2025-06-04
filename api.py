@@ -8,7 +8,7 @@ from rich import print, console
 
 from supervisor_agent.supervisor import next_country_supervisor
 from supervisor_agent.output_agent import output_agent
-from utils.parse_json import clean_and_parse_json
+from utils.save_report import save_report
 
 
 class NextCountryRequest(BaseModel):
@@ -38,6 +38,8 @@ def json_output_flow(request: NextCountryRequest):
     
     for m in supervisor_response["messages"]:
         m.pretty_print()
+        
+    save_report(supervisor_response)
 
     ai_response = [m for m in supervisor_response["messages"] if isinstance(m, AIMessage)]
     pretty_response = [m.content for m in ai_response]

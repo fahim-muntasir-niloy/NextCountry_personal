@@ -64,7 +64,7 @@
     "Q3: Do you hold any additional passports?": "no",
     "Q4: Do you currently have residency or citizenship in another country?": "no",
     "Q5: What best describes your work situation?": "Other",
-    "Q6: What industry do you work in?": "s",
+    "Q6: What industry do you work in?": "software",
     "Q7: Do you work for a company registered in your home country?": "no",
     "Q8: Are you looking to open a company in your new country?": "No, I will continue working remotely",
     "Q9: What is your monthly income from remote work?": "Less than $1,500",
