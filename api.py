@@ -64,10 +64,13 @@ def json_output_flow(request: NextCountryRequest):
         print("No JSON block found.")
 
 
+@app.get("/")
+def health_check():
+    return {"status": "ok"}
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("api:app",
-                host="localhost",
+                host="0.0.0.0",
                 port=9898, 
                 reload=True)
