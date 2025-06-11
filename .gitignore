@@ -4,3 +4,4 @@ __pycache__
 *.pdf
 /next_country
 .vercel
+nc_venv

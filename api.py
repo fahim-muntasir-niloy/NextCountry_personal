@@ -50,8 +50,6 @@ def json_output_flow(request: NextCountryRequest):
 
     output = output_response["messages"][-1].content
     
-    # print(output)
-
     # Handling output string -> convert to json
     json_match = re.search(r"```json\n(.*?)```", output, re.DOTALL)
     if json_match:

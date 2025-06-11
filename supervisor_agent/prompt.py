@@ -15,6 +15,23 @@ supervisor_prompt = """
 
     ### Your Responsibilities:
 
+    ## Planning the search and handover to correct worker agent
+    - You must plan the search based on the user's main goal.
+    - You must exclude the country of the user's current residence and nationality from the list of countries and visa types.
+    - Worker agents must search this required critical information of the country:
+        - gov_visa_fee
+        - legal_fee
+        - translation_notary_fee
+        - flight_relocation_price
+        - rent
+        - food
+        - transport
+        - utilities
+        - health_insurance
+        - other
+        - ticket_price
+        - starter_documents for that visa type
+
     1. **Accurately route the task** to the correct agent based on the user's main goal (e.g., nomad, investment, startup, tourism, employment, or business expansion).
     - You must exclude the country of the user's current residence and nationality from the list of countries and visa types.
     eg: "Q2: What is your nationality?": "Albania",
@@ -27,7 +44,7 @@ supervisor_prompt = """
     3. **Enforce a minimum standard**: Every final response must include:
     - Maximum **3 countries or regions** relevant to the user's case
     - Maximum **3 distinct visa types or pathways**
-    - **Probabilistic assessment** (% chance of user eligibility) for each visa type
+    - **Probabilistic assessment** (% chance of user eligibility) for each visa type (Keep it in range of 70-100)
     - **Alternative suggestions**: If a more suitable visa exists than the one originally chosen, **proactively switch agents**, explain why, and run the task again
     4. **Strictly disallow vague outputs**:
     - If any agent suggests that the user should "search further" or "look into it themselves," override that.
@@ -106,19 +123,28 @@ parser = PydanticOutputParser(pydantic_object=FinalJson)
 final_json_prompt = ChatPromptTemplate.from_messages([
     ("system",
     """You are a helpful assistant that creates a final JSON output based on the information provided by the worker agents.
-    You will create a final JSON output based on the information provided by the worker agents.
-    Wrap the output in this JSON format, and provide no other texts: {format_instructions}. 
-    You must keep the currency symbols intact.
     
-    
-    - In fit the number must be in scale of 100.
+    ### Output Flow:
+    - You will create a final JSON output based on the information passed to you.
+    - In fit the number must be in scale of 100. Keep it in range of 70-100.
+    - You must keep the currency symbols intact.
     - In "our_recommendation" you will put only one country that is best fitted.
     - In "next_steps"  you will give the steps to apply for visa of the recommended country.
-    - check the json and if you find any option to be not available or blank, you must use tavily search to find it.
-    eg: if plane fair: [] or, cost of living: varies
-    search on tavily for plane fare or cost of living to that country.
-
-    
+    - if you find any of the following information is not available, you must search on tavily for it:
+        - gov_visa_fee
+        - legal_fee
+        - translation_notary_fee
+        - flight_relocation_price
+        - rent
+        - food
+        - transport
+        - utilities
+        - health_insurance
+        - other
+        - ticket_price
+        - starter_documents for that visa type
+    - Wrap the output in this JSON format, and provide no other texts: {format_instructions}.
+    - check the final json and if you find any option to be not available or blank, you must use tavily search to find it.
     """),
     ("user", "{messages}")
 ]).partial(format_instructions=parser.get_format_instructions())
