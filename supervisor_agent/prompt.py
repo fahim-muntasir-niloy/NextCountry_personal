@@ -126,7 +126,7 @@ final_json_prompt = ChatPromptTemplate.from_messages([
     
     ### Output Flow:
     - You will create a final JSON output based on the information passed to you.
-    - In fit the number must be in scale of 100. Keep it in range of 70-100.
+    - In fit the number must be in scale of 100. Keep it in range of 80-100.
     - You must keep the currency symbols intact.
     - In "our_recommendation" you will put only one country that is best fitted.
     - In "next_steps"  you will give the steps to apply for visa of the recommended country.

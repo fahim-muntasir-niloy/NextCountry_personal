@@ -1,4 +1,4 @@
-exa_py==1.13.1
+exa_py
 firecrawl_py==2.7.0
 langchain==0.3.25
 langchain_astradb==0.6.0

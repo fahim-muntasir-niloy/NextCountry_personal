@@ -7,9 +7,9 @@ from supervisor_agent.tools import TOOLS
 
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 llm = init_chat_model(
-    model="gemini-2.0-flash",
+    model="gemini-2.5-flash-preview-05-20",
     model_provider="google_genai",
-    temperature=0.5
+    temperature=0.8
 )
 
 

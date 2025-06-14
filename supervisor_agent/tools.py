@@ -25,21 +25,14 @@ def search_exa(query: str) -> str:
   """Search for webpages based on the 
   query and retrieve their contents."""
   return exa_client.search_and_contents(query,
-                                       num_results = 5,
+                                       num_results = 6,
                                        filter_empty_results=True,
-                                       livecrawl="auto",
-                                       text = True)
+                                       livecrawl="fallback",
+                                       context = True,
+                                       summary=True)
 
 # === Tavily ===
 tavily_client = TavilyClient(os.environ["TAVILY_API_KEY"])
-
-# def search_tavily(query: str) -> str:
-#   """Search for webpages based on the query and 
-#   retrieve their contents using tavily."""
-#   return tavily_client.search(query,
-#                               max_results=5,
-#                               include_answer="basic",
-#                               )
 @tool
 def search_tavily(query: str):
   """
