@@ -3,6 +3,7 @@ from supervisor_agent.tools import TOOLS
 
 
 from supervisor_agent.worker_agents import (llm, 
+                                            knowledgebase_agent,
                                             nomad_visa_agent, 
                                             investment_visa_agent, 
                                             startup_visa_agent, 
@@ -20,7 +21,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 next_country_supervisor = create_supervisor(
     model=llm,
-    agents=[nomad_visa_agent, 
+    agents=[knowledgebase_agent,
+            nomad_visa_agent, 
             investment_visa_agent,
             startup_visa_agent, 
             tourist_visa_agent, 
@@ -29,7 +31,7 @@ next_country_supervisor = create_supervisor(
             ],
     prompt=supervisor_prompt,
     tools = TOOLS,
-    add_handoff_back_messages=False,
+    add_handoff_back_messages=True,
     output_mode="full_history",
     parallel_tool_calls = False,
     supervisor_name="Next Country Supervisor",

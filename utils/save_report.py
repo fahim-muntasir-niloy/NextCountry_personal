@@ -5,7 +5,7 @@ from langchain_core.messages import AIMessage, HumanMessage
 
 
 def save_report(response):
-    output_dir = "D:\\NextCountry_personal\\responses"
+    output_dir = "./responses"
 
     # Create the directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)

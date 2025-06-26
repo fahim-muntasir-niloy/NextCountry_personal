@@ -39,7 +39,7 @@ def json_output_flow(request: NextCountryRequest):
     for m in supervisor_response["messages"]:
         m.pretty_print()
         
-    save_report(supervisor_response)
+    # save_report(supervisor_response)
 
     ai_response = [m for m in supervisor_response["messages"] if isinstance(m, AIMessage)]
     pretty_response = [m.content for m in ai_response]
