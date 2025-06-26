@@ -13,23 +13,10 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
-from exa_py import Exa
 from tavily import TavilyClient
 from firecrawl import FirecrawlApp
 
   
-# === Exa ===
-exa_client = Exa(api_key=os.environ["EXA_API_KEY"])
-@tool
-def search_exa(query: str) -> str:
-  """Search for webpages based on the 
-  query and retrieve their contents."""
-  return exa_client.search_and_contents(query,
-                                       num_results = 6,
-                                       filter_empty_results=True,
-                                       livecrawl="fallback",
-                                       context = True,
-                                       summary=True)
 
 # === Tavily ===
 tavily_client = TavilyClient(os.environ["TAVILY_API_KEY"])
@@ -39,9 +26,11 @@ def search_tavily(query: str):
   This function fetches context on the query using tavily.
   It will be the default search tool if the user does not specify a tool.
   """
-  context = tavily_client.get_search_context(query)
+  result = tavily_client.search(query,
+                                 auto_parameters = True,
+                                 )
 
-  return context
+  return result
 
 # === Firecrawler Tool ===
 firecrawl_app = FirecrawlApp(api_key=os.getenv("FIRECRAWLER_API_KEY"))
@@ -97,4 +86,4 @@ def vecdb_tool(query:str):
   return retriever.invoke(query)
 
 
-TOOLS = [vecdb_tool, search_exa, search_tavily, scrape_website]
+TOOLS = [vecdb_tool, search_tavily, scrape_website]
