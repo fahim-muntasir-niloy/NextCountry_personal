@@ -3,7 +3,7 @@ from langchain.chat_models import init_chat_model
 import os
 from dotenv import load_dotenv
 load_dotenv()
-from supervisor_agent.tools import TOOLS, vecdb_tool
+from supervisor_agent.tools import TOOLS
 from supervisor_agent.worker_prompts import start_up_visa_prompt
 
 
@@ -15,12 +15,6 @@ llm = init_chat_model(
 )
 
 
-knowledgebase_agent = create_react_agent(
-    model = llm,
-    tools = [vecdb_tool],
-    prompt = "Look for the visa requirements of the users preferred locations in your knowledgebase.",
-    name = "knowledgebase_agent"
-)
 
 nomad_visa_agent = create_react_agent(
     model=llm,

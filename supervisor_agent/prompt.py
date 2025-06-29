@@ -31,8 +31,7 @@ supervisor_prompt = """
         - other
         - ticket_price
         - starter_documents for that visa type
-
-    0. Start with talking to knowledgebase_agent for most trusted information on different visa. If you dont find releant info (as we have only 4 country data as of now), refer to search tavily tool. 
+ 
 
     1. **Accurately route the task** to the correct agent based on the user's main goal (e.g., nomad, investment, startup, tourism, employment, or business expansion).
     - You must exclude the country of the user's current residence and nationality from the list of countries and visa types.

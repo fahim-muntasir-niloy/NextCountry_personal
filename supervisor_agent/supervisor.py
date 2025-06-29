@@ -2,8 +2,7 @@ from langgraph_supervisor import create_supervisor
 from supervisor_agent.tools import TOOLS
 
 
-from supervisor_agent.worker_agents import (llm, 
-                                            knowledgebase_agent,
+from supervisor_agent.worker_agents import (llm,
                                             nomad_visa_agent, 
                                             investment_visa_agent, 
                                             startup_visa_agent, 
@@ -21,7 +20,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 next_country_supervisor = create_supervisor(
     model=llm,
-    agents=[knowledgebase_agent,
+    agents=[
             nomad_visa_agent, 
             investment_visa_agent,
             startup_visa_agent, 
