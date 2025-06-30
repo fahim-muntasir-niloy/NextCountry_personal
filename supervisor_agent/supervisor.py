@@ -30,7 +30,7 @@ next_country_supervisor = create_supervisor(
             ],
     prompt=supervisor_prompt,
     tools = TOOLS,
-    add_handoff_back_messages=True,
+    add_handoff_back_messages=False,
     output_mode="full_history",
     parallel_tool_calls = False,
     supervisor_name="Next Country Supervisor",

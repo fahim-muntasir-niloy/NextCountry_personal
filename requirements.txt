@@ -16,3 +16,4 @@ rich
 psycopg2-binary
 langchain_postgres
 appwrite
+psycopg-binary
