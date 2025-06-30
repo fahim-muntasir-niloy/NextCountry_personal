@@ -3,22 +3,29 @@ from pydantic import BaseModel
 from langchain_core.messages import AIMessage
 import re
 import json
+from typing import Optional
 
 from rich import print, console
 
 from supervisor_agent.supervisor import next_country_supervisor
 from supervisor_agent.output_agent import output_agent
 from utils.save_report import save_report
+from db.app_write_operations import upload_file_to_bucket
+
+from utils.create_embedding_from_appwrite import create_embedding
+
+from datetime import datetime
 
 
 class NextCountryRequest(BaseModel):
-    message:dict
+    message: dict
+    user_id: Optional[str]
 
 
 app = FastAPI(
     title="Next Country API",
     description="API for the Next Country project",
-    version="0.1.0",
+    version="1.5.0",
     contact={
         "name": "Fahim Muntasir",
         "url": "https://nextcountry.com",
@@ -28,7 +35,8 @@ app = FastAPI(
 @app.post("/next_country")
 def json_output_flow(request: NextCountryRequest):
     data = request.message
-    print("Received message: ", data)
+    user_id = request.user_id
+    print(f"Received message:  {data}, user_id: {user_id}")
     
     # Handling input json -> make it string
     pretty_json_str = json.dumps(data, indent=4)
@@ -40,11 +48,17 @@ def json_output_flow(request: NextCountryRequest):
         m.pretty_print()
         
     # save_report(supervisor_response)
+    now = datetime.now()
+    dt_string = now.strftime("%d_%m_%Y_%H_%M_%S")
+    filename = f"{user_id}_{dt_string}.md"
 
     ai_response = [m for m in supervisor_response["messages"] if isinstance(m, AIMessage)]
     pretty_response = [m.content for m in ai_response]
 
-    # print("Supervisor agent response: ", pretty_response)
+    print(upload_file_to_bucket(user_id, 
+                          pretty_response,
+                          filename=filename))
+
 
     output_response = output_agent.invoke({"messages": pretty_response})
 
@@ -56,10 +70,13 @@ def json_output_flow(request: NextCountryRequest):
         json_str = json_match.group(1)
         clean_json = json.loads(json_str)
         print(clean_json)
+
+        print(create_embedding(user_id))
+
         return clean_json
     
     else:
-        print("No JSON block found.")
+        return f"User_id: {user_id}, JSON Generation Failed."
 
 
 @app.get("/")
