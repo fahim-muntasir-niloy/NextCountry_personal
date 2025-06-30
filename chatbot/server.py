@@ -16,7 +16,7 @@ PGPASSWORD=os.getenv("PGPASSWORD")
 
 
 @mcp.tool()
-def knowledgebase(messages: str, user_id:str="test_vectors"):
+def knowledgebase(messages: str, user_id:str):
     """
     keyword: /kb
     Retrieve the query information from knowledgebase stored in postgres database.
@@ -25,7 +25,7 @@ def knowledgebase(messages: str, user_id:str="test_vectors"):
     Args:
         messages (str): The query message.
     Returns:
-        list: A list of documents' metadata.
+        list: A list of documents' contents.
     """
 
     PGVECTOR_CONNECTION_STRING = f"postgresql://{PGUSER}:{PGPASSWORD}@{PGHOST}/{PGDATABASE}?sslmode=require&channel_binding=require"
@@ -43,8 +43,9 @@ def knowledgebase(messages: str, user_id:str="test_vectors"):
 
 
     retriever = vector_store.as_retriever(
-        search_type="similarity",
-        search_kwargs={"k": 6}
+        search_type="similarity_score_threshold",
+        search_kwargs={'score_threshold': 0.3,
+                       "k":10}
     )
     docs = retriever.invoke(messages)
     
