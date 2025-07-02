@@ -17,3 +17,8 @@ psycopg2-binary
 langchain_postgres
 appwrite
 psycopg-binary
+langchain-ollama
+pymupdf
+docx2txt
+supabase
+langchain-mcp-adapters

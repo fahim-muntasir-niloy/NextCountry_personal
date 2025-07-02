@@ -4,22 +4,26 @@ from langchain_core.messages import AIMessage
 import re
 import json
 from typing import Optional
+import uuid
 
 from rich import print, console
 
 from supervisor_agent.supervisor import next_country_supervisor
 from supervisor_agent.output_agent import output_agent
 from utils.save_report import save_report
-from db.app_write_operations import upload_file_to_bucket
+# from db.app_write_operations import upload_file_to_bucket
+from db.supabase_operations import upload_md_file_to_bucket
 
-from utils.create_embedding_from_appwrite import create_embedding
+from utils.supabase_embeddings import create_embedding_supabase
 
 from datetime import datetime
 
 
 class NextCountryRequest(BaseModel):
     message: dict
-    user_id: Optional[str]
+    user_id: Optional[str] = str(uuid.uuid4())
+    
+    # "ab7a68c8-d9b2-4c4d-b7ef-445829587759"
 
 
 app = FastAPI(
@@ -55,7 +59,7 @@ def json_output_flow(request: NextCountryRequest):
     ai_response = [m for m in supervisor_response["messages"] if isinstance(m, AIMessage)]
     pretty_response = [m.content for m in ai_response]
 
-    print(upload_file_to_bucket(user_id, 
+    print(upload_md_file_to_bucket(user_id, 
                           pretty_response,
                           filename=filename))
 
@@ -71,7 +75,7 @@ def json_output_flow(request: NextCountryRequest):
         clean_json = json.loads(json_str)
         print(clean_json)
 
-        print(create_embedding(user_id))
+        print(create_embedding_supabase(user_id))
 
         return clean_json
     

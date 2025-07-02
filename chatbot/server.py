@@ -5,14 +5,15 @@ from dotenv import load_dotenv
 load_dotenv()
 from fastmcp import FastMCP
 from langchain_postgres import PGVector
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_ollama import OllamaEmbeddings
 
 mcp = FastMCP("NC_Chatbot_Server")
 
-PGHOST=os.getenv("PGHOST")
-PGDATABASE=os.getenv("PGDATABASE")
-PGUSER=os.getenv("PGUSER")
-PGPASSWORD=os.getenv("PGPASSWORD")
+embedding_engine = OllamaEmbeddings(
+    base_url="http://54.80.168.47:11434",
+    model="bge-m3:latest",
+)
+SUPABASE_PG_CONN_URI = os.getenv("SUPABASE_PG_CONN_URI")
 
 
 @mcp.tool()
@@ -28,16 +29,11 @@ def knowledgebase(messages: str, user_id:str):
         list: A list of documents' contents.
     """
 
-    PGVECTOR_CONNECTION_STRING = f"postgresql://{PGUSER}:{PGPASSWORD}@{PGHOST}/{PGDATABASE}?sslmode=require&channel_binding=require"
-
-    embedding_engine = GoogleGenerativeAIEmbeddings(
-    model="models/text-embedding-004",
-)
 
     vector_store = PGVector(
         embeddings=embedding_engine,
         collection_name=user_id,
-        connection=PGVECTOR_CONNECTION_STRING,
+        connection=SUPABASE_PG_CONN_URI,
         use_jsonb=True,
     )
 

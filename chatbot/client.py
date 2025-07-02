@@ -13,8 +13,7 @@ client = MultiServerMCPClient(
     {
         "NC_Chatbot_Server": {
             "command": "python",
-            # Make sure to update to the full absolute path to your math_server.py file
-            "args": ["/home/fahim-muntasir/Office/NextCountry_personal/chatbot/server.py"],
+            "args": ["D:\\NextCountry_personal\\chatbot\\server.py"],
             "transport": "stdio",
         }
     }
@@ -32,10 +31,11 @@ def prompt(state: CustomState):
     user_id = state["user_id"]
     system_msg = f"""You are a funny and helpful assistant. 
                     keep your answer short and to the point.
+                    Always use the knowledgebase tool to get the information, whether user tells you to or not.
                     Try to answer in 6-10 sentances maximum.
                     Use emojis in response.
                     You must breakdown the user query and pass it multiple times to knowledgebase tool for better response.
-                    eg: /kb compare between morocco and Mauritius investor visa documents
+                    eg: compare between morocco and Mauritius investor visa documents
                     flow: you will first find morocco visa documents, then mauritius visa documents. Then prepare the answer.
                     The current User ID is {user_id}."""
     
@@ -66,7 +66,7 @@ async def init_chat(msg, user_id):
 import asyncio
 
 response = asyncio.run(
-    init_chat("/kb Would it be easy to go to UAE or Africa?", "2db51638-5ca2-4661-8705-7a253ce21e8c")
+    init_chat("Compare between portugal and lithuania startup visas? Will UAE be safer for easy access?", "2adaf9b0-3183-411d-a916-f788626709cb")
 )
 
 for m in response["messages"]:

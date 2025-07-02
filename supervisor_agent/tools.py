@@ -56,9 +56,16 @@ def scrape_website(query):
 
 
 
-google_embedding_model = GoogleGenerativeAIEmbeddings(
-    model="models/text-embedding-004",
+# google_embedding_model = GoogleGenerativeAIEmbeddings(
+#     model="models/text-embedding-004",
+# )
+
+from langchain_ollama import OllamaEmbeddings
+embedding_engine = OllamaEmbeddings(
+    base_url="http://54.80.168.47:11434",
+    model="bge-m3:latest",
 )
+
 
 @tool
 def vecdb_tool(query:str):
@@ -70,8 +77,8 @@ def vecdb_tool(query:str):
   """
   
   vector_store = AstraDBVectorStore(
-    embedding = google_embedding_model,
-    collection_name="visa_details",
+    embedding = embedding_engine,
+    collection_name="nc_visa_details_vector_db",
     api_endpoint=ASTRA_DB_API_ENDPOINT,
     token=ASTRA_DB_APPLICATION_TOKEN,
     autodetect_collection=True,
@@ -79,7 +86,7 @@ def vecdb_tool(query:str):
   
   retriever = vector_store.as_retriever(
     search_type="similarity", 
-    search_kwargs={"k":5, 
+    search_kwargs={"k":15, 
                 #    "filter": {"country": country}
                    }
   )

@@ -31,7 +31,7 @@ supervisor_prompt = """
         - other
         - ticket_price
         - starter_documents for that visa type
- 
+
 
     1. **Accurately route the task** to the correct agent based on the user's main goal (e.g., nomad, investment, startup, tourism, employment, or business expansion).
     - You must exclude the country of the user's current residence and nationality from the list of countries and visa types.
@@ -42,11 +42,18 @@ supervisor_prompt = """
     - Completeness
     - Accuracy of visa category and region suggestions
     - Appropriate and justified tool use (make sure no vague fallback like "user should research" is present)
+
+    ---
     3. **Enforce a minimum standard**: Every final response must include:
     - Maximum **3 countries or regions** relevant to the user's case
     - Maximum **3 distinct visa types or pathways**
     - **Probabilistic assessment** (% chance of user eligibility) for each visa type (Keep it in range of 70-100)
     - **Alternative suggestions**: If a more suitable visa exists than the one originally chosen, **proactively switch agents**, explain why, and run the task again
+    
+    *First mention the country and visa that the user wants, then mention the countries and visa that are relevant to the user's case.*
+    ---
+    
+    
     4. **Strictly disallow vague outputs**:
     - If any agent suggests that the user should "search further" or "look into it themselves," override that.
     - Ensure that the **agent performs the actual research using tools**. Re-run the step if needed.
@@ -74,7 +81,7 @@ supervisor_prompt = """
     ### Output Flow:
 
     - Start by clearly summarizing the user's goal and how you're addressing it.
-    - You must have two countries in recomended section
+    - You must have two-three countries in recomended section
     - Present the enriched information in a **structured format**, like:
 
     **🌍 Top Recommended Countries/ Regions of the country & Visas:**
@@ -129,6 +136,7 @@ final_json_prompt = ChatPromptTemplate.from_messages([
     
     ### Output Flow:
     - You will create a final JSON output based on the information passed to you.
+    - You must have atleast two different countries in the E and F section
     - In fit the number must be in scale of 100. Keep it in range of 80-100.
     - You must keep the currency symbols intact.
     - In "our_recommendation" you will put only one country that is best fitted.
