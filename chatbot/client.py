@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 from langgraph.graph import StateGraph, START, MessagesState
@@ -21,10 +22,12 @@ client = MultiServerMCPClient(
 
 llm = init_chat_model("google_genai:gemini-2.5-flash", temperature=0.7)
 
+
 # Define custom state schema with messages and user_id
 class CustomState(MessagesState):
     user_id: str
-    remaining_steps:list
+    remaining_steps: list
+
 
 # Optional: define a prompt function that can access the custom state
 def prompt(state: CustomState):
@@ -38,8 +41,9 @@ def prompt(state: CustomState):
                     eg: compare between morocco and Mauritius investor visa documents
                     flow: you will first find morocco visa documents, then mauritius visa documents. Then prepare the answer.
                     The current User ID is {user_id}."""
-    
+
     return [{"role": "system", "content": system_msg}] + state["messages"]
+
 
 # Create the agent with the custom state schema and prompt
 
@@ -54,21 +58,19 @@ async def init_chat(msg, user_id):
         prompt=prompt,
     )
 
+    res = await agent.ainvoke({"messages": msg, "user_id": user_id})
 
-    res = await agent.ainvoke({
-        "messages":msg,
-        "user_id":user_id
-    })
-
-    return res
+    return res["messages"][-1].content
 
 
-import asyncio
+# import asyncio
 
-response = asyncio.run(
-    init_chat("Compare between portugal and lithuania startup visas? Will UAE be safer for easy access?", "2adaf9b0-3183-411d-a916-f788626709cb")
-)
+# response = asyncio.run(
+#     init_chat(
+#         "Compare between portugal and lithuania startup visas? Will UAE be safer for easy access?",
+#         "2adaf9b0-3183-411d-a916-f788626709cb",
+#     )
+# )
 
-for m in response["messages"]:
-    m.pretty_print()
-
+# for m in response["messages"]:
+#     m.pretty_print()
