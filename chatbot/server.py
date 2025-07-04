@@ -39,7 +39,7 @@ def knowledgebase(messages: str, user_id: str):
 
     retriever = vector_store.as_retriever(
         search_type="similarity_score_threshold",
-        search_kwargs={"score_threshold": 0.3, "k": 10},
+        search_kwargs={"score_threshold": 0.1, "k": 10},
     )
     docs = retriever.invoke(messages)
 

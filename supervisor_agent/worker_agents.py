@@ -2,6 +2,7 @@ from langgraph.prebuilt import create_react_agent
 from langchain.chat_models import init_chat_model
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 from supervisor_agent.tools import TOOLS
 from supervisor_agent.worker_prompts import start_up_visa_prompt
@@ -9,11 +10,8 @@ from supervisor_agent.worker_prompts import start_up_visa_prompt
 
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 llm = init_chat_model(
-    model="gemini-2.5-flash-preview-05-20",
-    model_provider="google_genai",
-    temperature=0.7
+    model="gemini-2.5-flash", model_provider="google_genai", temperature=0.8
 )
-
 
 
 nomad_visa_agent = create_react_agent(
@@ -44,10 +42,8 @@ nomad_visa_agent = create_react_agent(
         Act confidently and provide relevant, structured, and actionable guidance based on the tools available.
         """
     ),
-    name="nomad_visa_agent"
+    name="nomad_visa_agent",
 )
-
-
 
 
 investment_visa_agent = create_react_agent(
@@ -79,18 +75,13 @@ investment_visa_agent = create_react_agent(
         You are expected to act confidently and as a trusted source for global investment migration.
         """
     ),
-    name="investment_visa_agent"
+    name="investment_visa_agent",
 )
-
 
 
 startup_visa_agent = create_react_agent(
-    model=llm,
-    tools=TOOLS,
-    prompt=start_up_visa_prompt,
-    name="startup_visa_agent"
+    model=llm, tools=TOOLS, prompt=start_up_visa_prompt, name="startup_visa_agent"
 )
-
 
 
 tourist_visa_agent = create_react_agent(
@@ -122,9 +113,8 @@ tourist_visa_agent = create_react_agent(
         You are expected to act as a trusted and knowledgeable travel advisor for global tourism planning.
         """
     ),
-    name="tourist_visa_agent"
+    name="tourist_visa_agent",
 )
-
 
 
 employment_visa_agent = create_react_agent(
@@ -156,9 +146,8 @@ employment_visa_agent = create_react_agent(
         You are expected to act as a knowledgeable and reliable advisor for global work migration planning.
         """
     ),
-    name="employment_visa_agent"
+    name="employment_visa_agent",
 )
-
 
 
 expand_existing_business_visa_agent = create_react_agent(
@@ -190,5 +179,5 @@ expand_existing_business_visa_agent = create_react_agent(
         You are expected to act as a knowledgeable advisor for international business expansion planning.
         """
     ),
-    name="expand_existing_business_visa_agent"
+    name="expand_existing_business_visa_agent",
 )
